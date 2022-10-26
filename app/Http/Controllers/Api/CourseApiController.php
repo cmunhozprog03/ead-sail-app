@@ -14,4 +14,11 @@ class CourseApiController extends Controller
         $courses = Course::get();
         return CourseApiResource::collection($courses);
     }
+
+
+    public function show($id)
+    {
+        $course = Course::findOrFail($id);
+        return new CourseApiResource($course);
+    }
 }

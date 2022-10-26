@@ -28,3 +28,4 @@ Route::get('/', function(){
 });
 
 Route::get('/courses', [CourseApiController::class, 'index']);
+Route::get('/courses/{id}', [CourseApiController::class, 'show']);
