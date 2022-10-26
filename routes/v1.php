@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\{
+  CourseApiController
+};
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -23,3 +26,5 @@ Route::get('/', function(){
     'success' => true,
   ]);
 });
+
+Route::get('/courses', [CourseApiController::class, 'index']);
