@@ -4,21 +4,29 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\CourseApiResource;
-use App\Models\Course;
+use App\Repositories\CourseRepository;
 use Illuminate\Http\Request;
 
 class CourseApiController extends Controller
 {
+    protected $repository;
+
+    public function __construct(CourseRepository $couseRepository)
+    {
+        $this->repository = $couseRepository;
+    }
+
     public function index()
     {
-        $courses = Course::get();
-        return CourseApiResource::collection($courses);
+        return CourseApiResource::collection($this->repository->getAllCourses());;
     }
 
 
     public function show($id)
     {
-        $course = Course::findOrFail($id);
-        return new CourseApiResource($course);
+        
+        return new CourseApiResource($this->repository->getCourse($id));
     }
+
+
 }
