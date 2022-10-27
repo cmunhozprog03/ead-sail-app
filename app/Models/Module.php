@@ -15,6 +15,13 @@ class Module extends Model
 
     protected $fillable = ['name'];
 
+
+    // One =< Many
+    public function lessons()
+    {
+        return $this->hasMany(Lesson::class);
+    }
+
     // One => Many reverse
     public function course()
     {
