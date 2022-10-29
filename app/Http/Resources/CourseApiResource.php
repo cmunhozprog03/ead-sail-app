@@ -20,6 +20,6 @@ class CourseApiResource extends JsonResource
             'name' => $this->name,
             'description' => $this->description,
             'image' => $this->image ? Storage::url($this->image) : '',
-        ];
+        ];  
     }
 }
